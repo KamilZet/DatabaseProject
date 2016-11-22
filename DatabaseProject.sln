@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseProject", "DatabaseProject\DatabaseProject.sqlproj", "{A35540C6-10F8-477D-BA87-B5A0BF7548E6}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdventDW", "DatabaseProject\AdventDW.sqlproj", "{A35540C6-10F8-477D-BA87-B5A0BF7548E6}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Advent", "Advent\Advent.sqlproj", "{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,12 @@ Global
 		{A35540C6-10F8-477D-BA87-B5A0BF7548E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A35540C6-10F8-477D-BA87-B5A0BF7548E6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A35540C6-10F8-477D-BA87-B5A0BF7548E6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB6131E-6E9F-4A2D-8877-FC5E751EB087}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>DatabaseProject</Name>
+    <Name>AdventDW</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a35540c6-10f8-477d-ba87-b5a0bf7548e6}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -224,9 +224,9 @@
     <Build Include="Security\Sales.sql" />
     <Build Include="Security\Stats.sql" />
     <Build Include="HR\Synonyms\advemps.sql" />
-    <Build Include="dbo.vwView.sql" />
+    <Build Include="dbo\Views\dbo.vwView.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DatabaseProject.publish.xml" />
+    <None Include="Opublikuj.publish.xml" />
   </ItemGroup>
 </Project>
