@@ -25,6 +25,7 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -223,11 +224,20 @@
     <Build Include="Production\XMLSchemaCollections\ProductDescriptionSchemaCollection.sql" />
     <Build Include="Sales\XMLSchemaCollections\StoreSurveySchemaCollection.sql" />
     <Build Include="ExtendedProperties.sql" />
+    <Build Include="Security\Tests.sql" />
+    <Build Include="dbo\Tables\ProductDeployPlan.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="AdventDW">
       <DefaultValue>AdventDW</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdventureWorks2012.publish.xml" />
+    <None Include="SQLFiddle.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Advent.refactorlog" />
   </ItemGroup>
 </Project>
