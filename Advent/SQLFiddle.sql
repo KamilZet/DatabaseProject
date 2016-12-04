@@ -20,50 +20,50 @@ CROSS APPLY (SELECT
 	WHERE b.defaultposition > a.defaultposition) b
 GO
 
-WITH c (productid)
+WITH combpos (posnum)
 AS
 (SELECT
 		*
 	FROM (VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (NULL)) c (productid))
 
 SELECT
-	pdp1.productid
-	,pdp2.productid
-	,pdp3.productid
-	,pdp4.productid
-	,pdp5.productid
-	,pdp6.productid
-	,pdp7.productid
-	,pdp8.productid
-	,pdp9.productid
-	,pdp10.productid
-FROM	c pdp1
-		,c pdp2
-		,c pdp3
-		,c pdp4
-		,c pdp5
-		,c pdp6
-		,c pdp7
-		,c pdp8
-		,c pdp9
-		,c pdp10
-WHERE (pdp2.PRODUCTID > pdp1.productid
-OR pdp2.productid IS NULL)
-AND (pdp3.PRODUCTID > pdp2.productid
-OR pdp3.productid IS NULL)
-AND (pdp4.PRODUCTID > pdp3.productid
-OR pdp4.productid IS NULL)
-AND (pdp5.PRODUCTID > pdp4.productid
-OR pdp5.productid IS NULL)
+	c1.posnum
+	,c2.posnum
+	,c3.posnum
+	,c4.posnum
+	,c5.posnum
+	,c6.posnum
+	,c7.posnum
+	,c8.posnum
+	,c9.posnum
+	,c10.posnum
+FROM	c c1
+		,c c2
+		,c c3
+		,c c4
+		,c c5
+		,c c6
+		,c c7
+		,c c8
+		,c c9
+		,c c10
+WHERE (c2.posnum > c1.posnum
+OR c2.posnum IS NULL)
+AND (c3.posnum > c2.posnum
+OR c3.posnum IS NULL)
+AND (c4.posnum > c3.posnum
+OR c4.posnum IS NULL)
+AND (c5.posnum > c4.posnum
+OR c5.posnum IS NULL)
 
-AND (pdp6.PRODUCTID > pdp5.productid
-OR pdp6.productid IS NULL)
-AND (pdp7.PRODUCTID > pdp6.productid
-OR pdp7.productid IS NULL)
-AND (pdp8.PRODUCTID > pdp7.productid
-OR pdp8.productid IS NULL)
-AND (pdp9.PRODUCTID > pdp8.productid
-OR pdp9.productid IS NULL)
-AND (pdp10.PRODUCTID > pdp9.productid
-OR pdp10.productid IS NULL)
+AND (c6.posnum > c5.posnum
+OR c6.posnum IS NULL)
+AND (c7.posnum > c6.posnum
+OR c7.posnum IS NULL)
+AND (c8.posnum > c7.posnum
+OR c8.posnum IS NULL)
+AND (c9.posnum > c8.posnum
+OR c9.posnum IS NULL)
+AND (c10.posnum > c9.posnum
+OR c10.posnum IS NULL)
 order by 1,2,3,4,5,6,7,8,9,10
