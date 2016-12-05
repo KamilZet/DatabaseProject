@@ -1,30 +1,27 @@
 ﻿USE AdventureWorks2012
 GO
 
-WITH c (productid, defaultposition)
+
+;WITH c
 AS
 (SELECT
-		productid
-		,DEFAULTPOSITION
-	FROM productdeployplan UNION SELECT
-		NULL
-		,NULL)
+		1 AS n UNION ALL SELECT
+		n + 1
+	FROM c
+	WHERE n < 10)
+	
+select @projFields = @projFields + convert(varchar(100),n) + ',' from
+c
 
-SELECT
-	a.productid
-	,b.productid
-FROM c a
-CROSS APPLY (SELECT
-		b.productid
-	FROM c b
-	WHERE b.defaultposition > a.defaultposition) b
-GO
+select @projFields
 
-WITH combpos (posnum)
+WITH c (posnum)
 AS
 (SELECT
-		*
-	FROM (VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (NULL)) c (productid))
+		1 AS posnum 
+		UNION ALL SELECT posnum + 1
+	FROM c
+	WHERE posnum < 10)
 
 SELECT
 	c1.posnum
@@ -66,4 +63,4 @@ AND (c9.posnum > c8.posnum
 OR c9.posnum IS NULL)
 AND (c10.posnum > c9.posnum
 OR c10.posnum IS NULL)
-order by 1,2,3,4,5,6,7,8,9,10
+ORDER BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
