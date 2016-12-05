@@ -1,27 +1,41 @@
 ﻿USE AdventureWorks2012
 GO
 
+declare @projFields varchar(1000) = ''
 
-;WITH c
+;
+WITH c
 AS
 (SELECT
 		1 AS n UNION ALL SELECT
 		n + 1
 	FROM c
 	WHERE n < 10)
-	
-select @projFields = @projFields + convert(varchar(100),n) + ',' from
-c
 
-select @projFields
+SELECT
+	@projFields = @projFields + CONVERT(VARCHAR(100), n) + ','
+FROM c
 
-WITH c (posnum)
+SELECT
+	@projFields
+
+--todo
+--jak do rekursywnego generatora liczb doczucić na końcu NULL ???
+;
+WITH c_ (posnum)
 AS
 (SELECT
-		1 AS posnum 
-		UNION ALL SELECT posnum + 1
-	FROM c
-	WHERE posnum < 10)
+		1 AS posnum
+	UNION ALL SELECT
+		posnum + 1
+	FROM c_
+	WHERE posnum < 10),
+c (posnum)
+AS
+(SELECT
+		posnum
+	FROM c_ UNION SELECT
+		NULL)
 
 SELECT
 	c1.posnum
@@ -52,7 +66,6 @@ AND (c4.posnum > c3.posnum
 OR c4.posnum IS NULL)
 AND (c5.posnum > c4.posnum
 OR c5.posnum IS NULL)
-
 AND (c6.posnum > c5.posnum
 OR c6.posnum IS NULL)
 AND (c7.posnum > c6.posnum
@@ -63,4 +76,5 @@ AND (c9.posnum > c8.posnum
 OR c9.posnum IS NULL)
 AND (c10.posnum > c9.posnum
 OR c10.posnum IS NULL)
+AND c1.posnum IS NOT NULL
 ORDER BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
