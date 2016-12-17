@@ -88,6 +88,7 @@
     <Folder Include="HumanResources\XMLSchemaCollections\" />
     <Folder Include="Production\XMLSchemaCollections\" />
     <Folder Include="Sales\XMLSchemaCollections\" />
+    <Folder Include="Combinatorics" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Production\Tables\ScrapReason.sql" />
@@ -226,6 +227,8 @@
     <Build Include="ExtendedProperties.sql" />
     <Build Include="Security\Tests.sql" />
     <Build Include="dbo\Tables\ProductDeployPlan.sql" />
+    <Build Include="Combinatorics\vwRankScenarios.sql" />
+    <Build Include="Combinatorics\Combinatorics.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="AdventDW">
@@ -236,6 +239,8 @@
   <ItemGroup>
     <None Include="AdventureWorks2012.publish.xml" />
     <None Include="SQLFiddle.sql" />
+    <None Include="Script1.sql" />
+    <None Include="Script2.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Advent.refactorlog" />

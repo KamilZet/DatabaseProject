@@ -1,42 +1,20 @@
-﻿USE AdventureWorks2012
-GO
-
-declare @projFields varchar(1000) = ''
-
-;
-WITH c
-AS
-(SELECT
-		1 AS n UNION ALL SELECT
-		n + 1
-	FROM c
-	WHERE n < 10)
-
-SELECT
-	@projFields = @projFields + CONVERT(VARCHAR(100), n) + ','
-FROM c
-
-SELECT
-	@projFields
-
---todo
---jak do rekursywnego generatora liczb doczucić na końcu NULL ???
-;
-WITH c_ (
+﻿CREATE VIEW [Combinatorics].[vwRankScenarios]
+as
+WITH calc1 (
 posnum)
 AS
 (SELECT
 		1 AS posnum
 	UNION ALL SELECT
 		posnum + 1
-	FROM c_
+	FROM calc1
 	WHERE posnum < 10),
-c (
+calc2 (
 posnum)
 AS
 (SELECT
 		posnum
-	FROM c_ UNION SELECT
+	FROM calc1 UNION SELECT
 		NULL),
 combMatrix
 AS
@@ -54,16 +32,16 @@ AS
 		,c8.posnum AS [8]
 		,c9.posnum AS [9]
 		,c10.posnum AS [10]
-	FROM	c c1
-			,c c2
-			,c c3
-			,c c4
-			,c c5
-			,c c6
-			,c c7
-			,c c8
-			,c c9
-			,c c10
+	FROM	calc2 c1
+			,calc2 c2
+			,calc2 c3
+			,calc2 c4
+			,calc2 c5
+			,calc2 c6
+			,calc2 c7
+			,calc2 c8
+			,calc2 c9
+			,calc2 c10
 	WHERE (c2.posnum > c1.posnum
 	OR c2.posnum IS NULL)
 	AND (c3.posnum > c2.posnum
@@ -84,9 +62,6 @@ AS
 	OR c10.posnum IS NULL)
 	AND c1.posnum IS NOT NULL)
 
-SELECT
-	* INTO #combMatrix
-FROM combMatrix;
 
 SELECT
 	upvt.idcomb
@@ -94,9 +69,8 @@ SELECT
 	,upvt.idrank
 	,face.facecount
 	,face.facecount * pdp.PRODUCTWIDTH facemulti
-	,pdp.SHELFWIDTH
 	,pdp.*
-FROM #combMatrix
+FROM combMatrix
 UNPIVOT (
 idrank FOR idpos IN ([1], [2], [3], [4], [5], [6], [7], [8], [9], [10])
 ) upvt
@@ -106,9 +80,4 @@ CROSS JOIN (SELECT
 		3) face (facecount)
 INNER JOIN PRODUCTDEPLOYPLAN pdp
 	ON upvt.idrank = pdp.DEFAULTPOSITION
-where upvt.idcomb = 2
-order BY idcomb;
 
-
-
-drop table #combMatrix;
